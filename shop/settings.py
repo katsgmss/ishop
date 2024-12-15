@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-7t@cdi=5sbs+2bk((bvqb!f62ls+ic6e$*xqen^9mj9=!@r1c+
 DEBUG = True
 
 # Application definition
-ALLOWED_HOSTS = ['ishop-fsbl.onrender.com']
+ALLOWED_HOSTS = ['ishop-fsbl.onrender.com', '127.0.0.1']
 
 
 
@@ -74,10 +74,16 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+#import dj_database_url
+
+#DATABASES = {
+ #   'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600)
+#}
+
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600)
+    'default': dj_database_url.config(default='postgres://localhost:5432/mydb', conn_max_age=600)
 }
 
 
