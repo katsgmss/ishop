@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-7t@cdi=5sbs+2bk((bvqb!f62ls+ic6e$*xqen^9mj9=!@r1c+
 DEBUG = True
 
 # Application definition
-ALLOWED_HOSTS = ['ishop.onrender.com']
+ALLOWED_HOSTS = ['ishop-fsbl.onrender.com']
 
 
 
