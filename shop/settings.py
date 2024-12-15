@@ -74,17 +74,32 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-#import dj_database_url
+# import dj_database_url
 
-#DATABASES = {
- #   'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600)
-#}
-
-import dj_database_url
+# DATABASES = {
+#     'default': dj_database_url.config(default='postgres://localhost:5432/mydb', conn_max_age=600)
+# }
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://localhost:5432/mydb', conn_max_age=600)
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+
+# import os
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('DB_NAME'),  # Automatically populated by Render
+#         'USER': os.getenv('DB_USER'),  # Automatically populated by Render
+#         'PASSWORD': os.getenv('DB_PASSWORD'),  # Automatically populated by Render
+#         'HOST': os.getenv('DB_HOST'),  # Automatically populated by Render
+#         'PORT': os.getenv('DB_PORT', '5432'),  # Default PostgreSQL port
+#     }
+# }
 
 
 # Password validation
