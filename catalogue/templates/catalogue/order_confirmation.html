@@ -1,0 +1,28 @@
+{% extends 'catalogue/base.html' %}
+
+{% block title %}
+Order Confirmation - iShop
+{% endblock %}
+
+{% block content %}
+<div class="alert alert-success">
+<h4>Order Confirmation</h4>
+<hr>
+
+<p><b>Thank you for your order</b>, {{ user }}!</p>
+<p>Your order ID is {{ order_id }}.</p>
+
+
+    <h4>Your Items:</h4>
+    <ul style="list-style-type: square;" >
+        {% for item_id, item in cart.items %}
+        <li>
+            {{ item.name }} / Price: ${{ item.price }} / Quantity: {{ item.quantity }}
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <h4>Total: ${{ total }}</h4>
+    <p><b>Your order is now being processed. We will notify you once it's completed.</b></p>
+</div>
+{% endblock %}

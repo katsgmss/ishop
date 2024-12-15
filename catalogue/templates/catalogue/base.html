@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} iShop {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'catalogue/css/style.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'category_list' %}">iShop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">                                    
+
+                    <li class="nav-item"><a class="nav-link" href="{% url 'category_list' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'search_items' %}">Categories</a></li>                    
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+                    
+                    <li class="nav-item">
+                        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button class="nav-link" type="submit">Logout</button>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cart' %}">
+                            Cart 
+                            {% if request.session.cart %}
+                                ({{ request.session.cart|length }})
+                            {% else %}
+                                (0)
+                            {% endif %}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container pt-5">
+        {% block content %}
+
+        {% endblock %}
+    </main>
+
+    <footer class="custom-footer">
+        <p>&copy; 2024 iShop. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{% static 'catalogue/js/cart-popup.js' %}"></script>
+
+
+</body>
+
+</html>

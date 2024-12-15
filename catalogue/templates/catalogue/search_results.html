@@ -1,0 +1,66 @@
+{% extends 'catalogue/base.html' %}
+
+{% block title %}
+Search Results - iShop
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>Select Category</h4>
+                <div class="mb-3">
+                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </button>
+            
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">                                              
+                        {% for c in categories %}
+                            <li>
+                                <a class="dropdown-item" href="{% url 'search_items' %}?q={{ c.name }}">
+                                    {{ c.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+             <div class="col-md-9">
+                <h4>Search</h4>
+                <p>You can search based on product name, description and category name.</p>
+                <form action="{% url 'search_items' %}" method="get">
+                    <input type="text" name="q" placeholder="Search for an item..." value="{{ query }}" class="form-control mb-3" style="width: 300px">
+                    <button type="submit" class="btn btn-dark">Search</button>
+                </form>
+             </div>
+         </div>
+
+        <hr>
+        <p>Search Results for <b><i>"{{ query }}"</i></b></p>
+        <div class="row">
+            <div class="row d-flex flex-wrap">
+                {% for item in items %}
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-70 item-card">
+                            <div class="card-header text-center"><h4>{{ item.name }}</h4></div>
+                            <div class="card-body text-center">
+                                <img src="{{ item.image.url }}" alt="{{ item.name }}" class="custom-card">
+                            </div>
+                            <div class="card-footer text-center">
+                                <p>{{ item.description }}</p>
+                                <h5>Price: ${{ item.price }}</h5>
+                                <a class="btn btn-dark custom-btn" href="{% url 'add_to_cart' item.id %}">Add to Cart</a>
+                                <a class="btn btn-primary custom-btn1" href="{% url 'item' item.id %}">View Item</a>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}        
+                    <p>No items found.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

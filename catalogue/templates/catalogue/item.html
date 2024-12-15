@@ -1,0 +1,35 @@
+{% extends 'catalogue/base.html' %}
+
+{% block title %}
+Order Confirmation - iShop
+{% endblock %}
+
+{% block content %}
+
+<h5>Item Details</h5>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-body text-center">
+                    <img src="{{ single.image.url }}" alt="{{ single.name }}" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <span class="badge bg-dark">Brand/Model</span>&nbsp;&nbsp;<span class="badge bg-success">{{ single.category }}</span>
+        <h4>{{ single.name }}</h4>
+        <span class="badge bg-dark">Description</span>
+        <p>{{ single.description }}</p>
+        <ul class="list-group">
+            <li class="list-group-item"><h5>Price: ${{ single.price }} (+VAT)</h5>Discount available (with COUPON CODE)</li>
+            <li class="list-group-item"><b><span class="text-success"><u>Free Shipping - WORLDWIDE</u></span></b> *additional fees may apply</li>
+            <li class="list-group-item">
+                <a class="btn btn-sm btn-success" href="{% url 'add_to_cart' single.id %}">Add to Cart</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+input#id_password, input#id_username, input[type="email"], input[type="password"] {
+    display: block;
+    border: 1px solid #ddd;
+    padding: .3em;
+    border-radius: 7px;
+    width: 100%;
+}
+
+#cart-popup-container {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    z-index: 1000;
+}
+#cart-button {
+    position: relative;
+    z-index: 1001;
+}
+#cart-popup {
+    display: none;
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 300px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-history{
+    height: 400px;
+    overflow: scroll;
+}
+
+.custom-card{
+    width: 180px; /* Fixed width */
+    height: 200px; /* Fixed height */
+}
+
+.item-description{
+    height: 200px; /* Set a fixed height for the description */
+}
+
+.item-card{
+    border-radius: 0 !important;
+    box-shadow: 0 5px 8px #AAA !important;
+}
+
+.custom-btn{
+    border-radius: 0 !important;
+    box-shadow: 0 5px 8px #AAA !important;
+    background-color: #4dc291;
+    border-color: #4dc291;
+}
+
+.custom-btn1{
+    border-radius: 0 !important;
+    box-shadow: 0 5px 8px #AAA !important;
+    background-color: rgb(208, 114, 74);
+    border-color: rgb(208, 114, 74);
+}
+
+.custom-footer{
+    padding: 40px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif; /* Change the font as needed */
+    font-size: 20px; /* Adjust the font size */
+}
